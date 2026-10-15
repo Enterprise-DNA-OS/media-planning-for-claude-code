@@ -36,8 +36,9 @@ try{
  assert.equal(cli('import',imp).inserted,2);assert.equal(cli('import',imp).unchanged,2);
  const flights=cli('media-plan').filter(x=>x.campaign_id===c.id);assert.equal(flights.length,2);assert.equal(flights.reduce((n,r)=>n+Number(r.planned_cents),0),320100);
  cli('draft-order',['--placement=example audio flight'],false);
+ const crlf=path.join(dir,'windows.csv');writeFileSync(crlf,readFileSync(path.join(REPO_ROOT,'fixtures/bionic/data-sheet.csv'),'utf8').replace(/\r?\n/g,'\r\n'));assert.equal(cli('import',['bionic',`--campaign=${c.id}`,`--file=${crlf}`,actor]).unchanged,2);
  const oldEvents=cli('activity').length;
- const source=readFileSync(path.join(REPO_ROOT,'fixtures/bionic/data-sheet.csv'),'utf8');const changed=path.join(dir,'changed.csv');writeFileSync(changed,source.replace('1500.25','1550.25'));
+ const source=readFileSync(path.join(REPO_ROOT,'fixtures/bionic/data-sheet.csv'),'utf8').replace(/\r\n/g,'\n');const changed=path.join(dir,'changed.csv');writeFileSync(changed,source.replace('1500.25','1550.25'));
  assert.equal(cli('import',['bionic',`--campaign=${c.id}`,`--file=${changed}`,actor]).updated,1);
  assert.equal(cli('activity').length,oldEvents+1);
  const bad=path.join(dir,'bad.csv');writeFileSync(bad,source.replace('1500.25','2222.22').replace('1700.75','NaN'));
