@@ -1,0 +1,42 @@
+[
+  [
+    "Which placements need attention before launch?",
+    "launch-check"
+  ],
+  [
+    "Which campaigns are ahead of straight-line spend?",
+    "pacing"
+  ],
+  [
+    "Which actuals are too old to trust?",
+    "pacing"
+  ],
+  [
+    "Which supplier invoices differ from recorded delivery?",
+    "reconcile"
+  ],
+  [
+    "Which claims lack evidence or a current review?",
+    "compliance"
+  ],
+  [
+    "Which commitments exceed the campaign budget?",
+    "compliance"
+  ],
+  [
+    "Who owns each overdue supplier follow-up?",
+    "overdue"
+  ],
+  [
+    "How is spend allocated by channel and currency?",
+    "allocations"
+  ],
+  [
+    "Which planned costs changed, and who recorded the change?",
+    "activity"
+  ],
+  [
+    "What needs a decision at the Monday media meeting?",
+    "weekly-review"
+  ]
+]

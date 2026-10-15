@@ -1,24 +1,11 @@
-# Why there is no front end
+# A media planning desk without a front end
 
-Bionic is a database with a subscription. The tables underneath it are ordinary: a few entities, a few relationships, a handful of workflows you repeat every week. What you pay for is the layer on top that lets people who do not write SQL get at those tables. Screens, filters, dashboards, forms.
+A planner reviews flights, costs, actuals, invoices and follow-ups. These are records and calculations. A coding agent reads the same CLI commands a person can run, and writes documents for review.
 
-That layer used to be the whole product, because talking to a database was hard. It is not hard any more. Open this folder in Claude Code, describe what you want, and it writes the query, runs it, and explains the answer. Ask a question the dashboard never had a chart for and you still get an answer.
+`npm run view` renders read-only HTML for the week, pacing and reconciliation. `npm run docs` renders media authorization, insertion order and reconciliation drafts in the business brand. These files have no acting buttons and no live connection. Regenerate them after a record changes.
 
-## What you gain
+A browser application gives you drag-and-drop calendars, live collaboration, mobile capture and client sign-in. This base has none of those. Bionic also provides buying connections, supplier discovery and client approval workflows. This base does not recreate that network or transact media. Enterprise DNA scopes the screens, connections and permissions your own version needs.
 
-- **Better answers.** A dashboard shows what the vendor decided to chart. Here you ask your own question, in your own words, and get it answered against your own data.
-- **No seats.** Everyone who needs to look can look. The bill does not grow with headcount.
-- **Your data in your Postgres.** Plain tables. Back them up, query them from anything, leave any time. There is no export step because there is nothing to leave.
-- **A process that matches you.** When your way of working changes, you add a command. You do not wait for a feature request to clear.
+Pacing is linear across calendar days including the current day. Actual spend is the sum of logged daily amounts. Freshness is shown alongside the variance, so a missing report is not presented as measured underspend. No reach deduplication, attribution model, currency conversion, tax calculation or automatic ad serving runs here.
 
-## What you give up
-
-- **A visual board.** Stages are a table you ask about, not cards you drag.
-- **A phone app.** It runs where Claude Code runs.
-- **A vendor help desk.** This is open source. Enterprise DNA supports the installed version for businesses that want someone to call.
-
-## Who this fits
-
-Small teams who already use Claude Code, or who would rather learn to ask than learn another interface. If your team needs a screen to look at all day, keep Bionic. If you need the answers more than the screens, this is cheaper, faster and yours.
-
-Installed and run for you: https://enterprisedna.co/omni/instead-of/bionic
+/customise changes the model through a numbered migration. /new-view adds another read-only report to views.json. Keep views separated by currency and preserve events when changing records.

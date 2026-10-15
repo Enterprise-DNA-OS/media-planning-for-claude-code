@@ -1,0 +1,24 @@
+{
+  "captured": "2026-10-15T02:49:47.840Z",
+  "fictional": true,
+  "screens": [
+    {
+      "title": "Spend pacing",
+      "ask": "Where are we ahead of plan, and are the figures current?",
+      "command": "npm run media -- pacing",
+      "output": "campaign        placement        currency  planned      spent        expected     variance      freshness    \n  --------------  ---------------  --------  -----------  -----------  -----------  ------------  -------------\n  Coastal Launch  Search launch    AUD       AUD 9000.00  AUD 1700.00  AUD 2700.00  AUD -1000.00  Stale actuals\n  Harbour Spring  Morning audio    NZD       NZD 6000.00  NZD 3700.00  NZD 3300.00  NZD 400.00    Current      \n  Harbour Spring  Weekend display  NZD       NZD 4500.00  NZD 0.00     NZD 0.00     NZD 0.00      No actuals"
+    },
+    {
+      "title": "Supplier reconciliation",
+      "ask": "Which supplier invoice differs from the delivery we recorded?",
+      "command": "npm run media -- reconcile",
+      "output": "campaign        placement        currency  spent        invoiced     invoice_variance\n  --------------  ---------------  --------  -----------  -----------  ----------------\n  Coastal Launch  Search launch    AUD       AUD 1700.00  AUD 0.00     AUD -1700.00    \n  Harbour Spring  Morning audio    NZD       NZD 3700.00  NZD 4000.00  NZD 300.00      \n  Harbour Spring  Weekend display  NZD       NZD 0.00     NZD 0.00     NZD 0.00"
+    },
+    {
+      "title": "Launch checks",
+      "ask": "Which placements still need approval or evidence review?",
+      "command": "npm run media -- launch-check",
+      "output": "campaign        placement        starts_on   approved_by  blocking_checks\n  --------------  ---------------  ----------  -----------  ---------------\n  Harbour Spring  Morning audio    2026-10-05  Luc          0              \n  Coastal Launch  Search launch    2026-10-10  null         2              \n  Harbour Spring  Weekend display  2026-10-17  null         2"
+    }
+  ]
+}

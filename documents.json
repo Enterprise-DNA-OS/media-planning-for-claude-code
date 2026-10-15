@@ -1,11 +1,56 @@
 [
   {
-    "name": "example",
-    "title": "TODO(author): the first document this industry must produce",
-    "for_each": "select gen_random_uuid() as id, 'Example' as name",
+    "name": "media-authorization",
+    "title": "DRAFT media authorization",
+    "for_each": "select id,name from campaigns order by name",
     "file": "name",
     "sections": [
-      { "title": "Details", "sql": "select 'replace me' as item, $1::text as record_id" }
+      {
+        "title": "Client brief",
+        "note": "Internal draft. A person checks costs, scope, tax and commercial terms before seeking sign-off.",
+        "sql": "select name,client,owner,currency,budget_cents,starts_on,ends_on from campaigns where id=$1"
+      },
+      {
+        "title": "Planned placements",
+        "sql": "select placement,vendor,channel,starts_on,ends_on,currency,planned_cents from media_plan where campaign_id=$1 order by starts_on"
+      },
+      {
+        "title": "Open checks",
+        "sql": "select placement,rule,issue from compliance_issues where campaign_id=$1"
+      }
+    ]
+  },
+  {
+    "name": "insertion-order",
+    "title": "DRAFT insertion order",
+    "for_each": "select id,name from placements order by name",
+    "file": "name",
+    "sections": [
+      {
+        "title": "Placement",
+        "note": "No supplier booking or client signature has occurred. Add commercial terms and obtain approval outside this tool.",
+        "sql": "select campaign,placement,vendor,channel,starts_on,ends_on,currency,planned_cents,approved_by,approval_evidence from media_plan where id=$1"
+      },
+      {
+        "title": "Claims review",
+        "sql": "select name,evidence,reviewer,reviewed_on,review_due from claims where placement_id=$1"
+      }
+    ]
+  },
+  {
+    "name": "reconciliation",
+    "title": "DRAFT campaign reconciliation",
+    "for_each": "select id,name from campaigns order by name",
+    "file": "name",
+    "sections": [
+      {
+        "title": "Supplier differences",
+        "sql": "select placement,vendor,currency,planned_cents,spent_cents,invoiced_cents,invoice_variance_cents from reconciliation where campaign_id=$1"
+      },
+      {
+        "title": "Invoice register",
+        "sql": "select i.reference,p.name placement,c.currency,i.amount_cents,i.due_on from invoices i join placements p on p.id=i.placement_id join campaigns c on c.id=p.campaign_id where c.id=$1"
+      }
     ]
   }
 ]

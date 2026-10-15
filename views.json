@@ -1,13 +1,37 @@
 [
   {
     "name": "week",
-    "title": "This week",
-    "subtitle": "Media Planning for Claude Code: what needs attention, rendered by npm run view",
+    "title": "Media desk this week",
     "sections": [
       {
-        "title": "Needs attention",
-        "note": "TODO(author): point this at the industry's attention view (overdue, stuck, quiet).",
-        "sql": "select 'replace me' as item, 'TODO(author)' as why"
+        "title": "Launch checks",
+        "sql": "select campaign,placement,starts_on,blocking_checks from launch_check order by starts_on"
+      },
+      {
+        "title": "Late follow-ups",
+        "sql": "select campaign,task,owner,due_on,days_late from overdue_tasks order by due_on"
+      }
+    ]
+  },
+  {
+    "name": "pacing",
+    "title": "Spend pacing",
+    "sections": [
+      {
+        "title": "Straight-line pacing",
+        "note": "Expected spend assumes an even daily profile. Check actuals freshness before making decisions. Each currency stays separate.",
+        "sql": "select campaign,placement,currency,planned_cents,spent_cents,expected_cents,variance_cents,freshness from pacing order by campaign,placement"
+      }
+    ]
+  },
+  {
+    "name": "reconciliation",
+    "title": "Supplier reconciliation",
+    "sections": [
+      {
+        "title": "Invoice against recorded delivery",
+        "note": "A variance is an investigation prompt, not a payment instruction. No tax or currency conversion is applied.",
+        "sql": "select campaign,placement,currency,spent_cents,invoiced_cents,invoice_variance_cents from reconciliation order by campaign,placement"
       }
     ]
   }
